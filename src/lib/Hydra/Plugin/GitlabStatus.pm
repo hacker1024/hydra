@@ -66,7 +66,7 @@ sub common {
             my $projectId = $eval->jobsetevalinputs->find({ name => "gitlab_project_id" })->value;
             my $accessToken = $self->{config}->{gitlab_authorization}->{$projectId};
             my $rev = $i->revision;
-            my $domain = URI->new($i->uri)->host;
+            my $domain = "gitlab.com";
             my $url = "https://$domain/api/v4/projects/$projectId/statuses/$rev";
             print STDERR "GitlabStatus POSTing $state to $url\n";
             my $req = HTTP::Request->new('POST', $url);
